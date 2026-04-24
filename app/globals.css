@@ -1,6 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap');
 
 :root {
+  /* Light mode (default) */
+  --bg-dark: #f3f4f6;
+  --bg-card: #ffffff;
+  --bg-elevated: #e5e7eb;
+  --border: #d1d5db;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --accent-solar: #d97706;
+  --accent-grid: #2563eb;
+  --accent-load: #dc2626;
+  --accent-battery: #16a34a;
+  --accent-muted: #9ca3af;
+}
+
+[data-theme='dark'] {
+  /* Dark mode */
   --bg-dark: #0d1117;
   --bg-card: #161b22;
   --bg-elevated: #21262d;
@@ -26,6 +42,7 @@ html, body {
   font-family: 'Outfit', system-ui, sans-serif;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Dashboard layout */
@@ -33,18 +50,105 @@ html, body {
   min-height: 100vh;
   padding: 1.5rem;
 }
-.dashboard-header {
-  margin-bottom: 1.5rem;
+/* Navbar */
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.navbar-left {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: flex-start;
 }
-.dashboard-header h1 {
+
+.navbar-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.navbar h1 {
   font-weight: 600;
   font-size: 1.5rem;
   letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* Dropdown Menu */
+.menu-container {
+  position: relative;
+}
+
+.menu-button {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.menu-button:hover {
+  background: var(--bg-elevated);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  min-width: 200px;
+  z-index: 50;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+  background: var(--bg-elevated);
+}
+
+/* Ensure mobile looks okay */
+@media (max-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+  }
+  .navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .navbar h1 {
+    font-size: 1.25rem;
+  }
 }
 .mode-badge {
   font-family: 'JetBrains Mono', monospace;
@@ -59,7 +163,7 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 1.5rem;
-  align-items: start;
+  align-items: stretch;
 }
 @media (max-width: 900px) {
   .grid-2 { grid-template-columns: 1fr; }
@@ -114,17 +218,24 @@ html, body {
 
 /* KPI cards */
 .kpi-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
 .kpi-card {
+  flex: 1 1 180px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-left: 3px solid var(--card-accent, var(--accent-muted));
   border-radius: 8px;
   padding: 0.75rem 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background-color: var(--bg-elevated);
 }
 .kpi-label { font-size: 0.7rem; color: var(--text-muted); display: block; }
 .kpi-value { font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 500; }
@@ -158,3 +269,15 @@ html, body {
 .param-label { font-size: 0.75rem; color: var(--text-muted); display: block; }
 .param-value { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
 .last-updated { font-size: 0.7rem; color: var(--text-muted); margin: 1rem 0 0 0; }
+
+/* Flow Diagram Animations */
+.flow-anim {
+  stroke-dasharray: 6 4;
+  animation: flow-dash 1.5s linear infinite;
+  stroke-linecap: round;
+}
+
+@keyframes flow-dash {
+  from { stroke-dashoffset: 20; }
+  to { stroke-dashoffset: 0; }
+}
