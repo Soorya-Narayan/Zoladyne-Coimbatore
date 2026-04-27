@@ -43,7 +43,7 @@ Advanced data export engine supporting:
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/jees-antony/zol-dash-nextjs.git
+   git clone https://github.com/Soorya-Narayan/Zoladyne-Coimbatore.git
    cd zol-dash-nextjs
    ```
 2. Install dependencies:
