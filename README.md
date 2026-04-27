@@ -2,6 +2,14 @@
 
 A high-performance, real-time energy monitoring and analytics platform built with **Next.js 14**, **TypeScript**, and **DynamoDB**. This dashboard provides comprehensive visibility into solar generation, grid interaction, load demand, and battery health.
 
+
+## Demo
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/44ce3dee-0a98-4607-a7e8-afef32e8b9fe" width="30%" />
+  <img src="https://github.com/user-attachments/assets/69becc04-47a4-4f4a-82c1-d2716b4ae09c" width="30%" />
+  <img src="https://github.com/user-attachments/assets/9e01dfd0-73d6-48b0-ae7a-c3a508d86a4d" width="30%" />
+</p>
+
 ## 🚀 Key Features
 
 ### 📊 Real-Time Visualization
