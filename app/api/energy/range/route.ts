@@ -3,6 +3,8 @@
  * Query by timestamp range (milliseconds), handles pagination
  */
 
+export const dynamic = "force-dynamic";
+
 import { NextRequest, NextResponse } from "next/server";
 import { queryRange } from "@/lib/dynamodb";
 

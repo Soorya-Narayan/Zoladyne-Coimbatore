@@ -3,6 +3,8 @@
  * Basic health check
  */
 
+export const dynamic = "force-dynamic";
+
 import { NextResponse } from "next/server";
 import { useSynthetic } from "@/lib/dynamodb";
 

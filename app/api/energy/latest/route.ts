@@ -3,6 +3,8 @@
  * Returns the most recent record
  */
 
+export const dynamic = "force-dynamic";
+
 import { NextResponse } from "next/server";
 import { queryLatest } from "@/lib/dynamodb";
 

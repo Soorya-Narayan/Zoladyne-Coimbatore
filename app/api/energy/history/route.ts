@@ -3,6 +3,8 @@
  * Query by date range (UTC midnight), supports pagination via LastEvaluatedKey
  */
 
+export const dynamic = "force-dynamic";
+
 import { NextRequest, NextResponse } from "next/server";
 import { queryHistory } from "@/lib/dynamodb";
 

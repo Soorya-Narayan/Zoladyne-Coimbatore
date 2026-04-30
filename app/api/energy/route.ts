@@ -3,6 +3,8 @@
  * Returns time-series for charts (last N points, oldest → newest)
  */
 
+export const dynamic = "force-dynamic";
+
 import { NextRequest, NextResponse } from "next/server";
 import { queryLastNPoints } from "@/lib/dynamodb";
 
